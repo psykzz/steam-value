@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top played Games</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <style>
+    .header {
+        display: block;
+        min-height:200px;
+        padding-bottom: 50px;
+        background-color: #009688;;
+    }
+    header, main, footer {
+      padding-left: 240px;
+    }
+    li.logo {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 170px;
+    }
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+    .side-panel {
+        box-shadow: 1px 0px 14px #000;
+    }
+    .rotate {
+        -webkit-animation:spin 1s linear infinite;
+        -moz-animation:spin 1s linear infinite;
+        animation:spin 1s linear infinite;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WQCZQG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WQCZQG');</script>
+    <!-- End Google Tag Manager -->
+
+</head>
+<body>
+    <aside>
+        <ul id="slide-out" class="side-nav fixed">
+            <li class="logo">
+                <a id="logo-container" href="/" class="brand-logo">
+                    <img class="responsive-img" src="{{url_for('static', filename='header.png')}}" \>
+                </a>
+            </li>
+             <div class="divider"></div>
+            <li><a href="/">Home</a></li>
+            {% if steam_name %}
+            <li><a href="http://steamcommunity.com/id/{{steam_name}}/">View steam account</a></li>
+            {% endif %}
+            <li>
+                <a href="https://www.reddit.com/message/compose/?to=psykzz&subject=[Website]%20Steam%20game%20value">
+                    Contact me
+                </a>
+            </li>
+            <li><a href="#!">Raise an issue</a></li>
+            <li class="align-center"><a href='https://reddit.com/u/psykzz'><sub>Small tool created by <span class="teal-text">/u/psykzz</span></sub></a></li>
+        </ul>
+    </aside>
+
+    <main class="row">
+    {% block content %}
+    {% endblock %}
+    </main>
+    <!-- Compiled and minified JavaScript -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+</body>
+</html>

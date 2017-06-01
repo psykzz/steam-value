@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="header section">
+		<div class="col s10 offset-s1">
+		<h1 class='white-text center-align'>How much are you paying per hour?</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12 l10 offset-l1 section">
+			<br />
+			<div class="flow-text">Games order by best value, by cost per hour</div>
+			<div class="right-align">Prices are current store prices, not prices paid at time of purchase.</div>
+			<br />
+
+			{% for game in games %}
+			<div class="col s12 m12 l5 offset-l1 card">
+				<div class="card-content">
+          			<span class="card-title left-align truncate" style="display: inline;"><strong>{{game.name}}</strong></span> 
+          			<span class="card-title right">#{{loop.index}}</span>
+          			<div class="clearfix"></div>
+          			Cost per hour <strong>€{{'%0.2f'| format(game.cost_per_hour)}}</strong>
+					<blockquote>
+						Cost: €{{'%0.2f'| format(game.cost)}} <br />
+						Gametime: {{game.playtime}} hours 
+					</blockquote>
+				</div>
+				<div class="card-action">
+					<a href="http://store.steampowered.com/app/{{game.appid}}/">
+					View store page 
+					<i class="material-icons left">link</i>
+					</a>
+				</div>
+			</div> 
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

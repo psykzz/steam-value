@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="header section">
+		<div class="col s10 offset-s1">
+		<h1 class='white-text center-align'>How much are you paying per hour?</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12 l10 offset-l1 section">
+			<br />
+			<div class="flow-text center-align">Enter your steam name from your steam community page. </div>
+			<div class="center-align">For example my page is <a id='username-example' href='#'>http://steamcommunity.com/id/psykzz/</a> so i would enter <strong>psykzz</strong></div>
+			<br />
+
+			<div class="col s12 m12 l8 offset-l2 card">
+				<div class="card-content">
+          			<span class="card-title truncate">Enter your steam account</span> 
+          			<div class="clearfix"></div>
+          			
+          			<input type="text" name="name" placeholder="psykzz" autocomplete="username" />
+				</div>
+			</div> 
+			<br />
+
+			<div class="col s12 m12 l8 offset-l2">
+				<div class="center-align">
+				{% with messages = get_flashed_messages() %}
+				  {% if messages %}
+					<div class="flow-text">An error occurred</div>
+				    <ul class="flashes error">
+				    {% for message in messages %}
+				      <li style="color: #F44336;">{{ message }}</li>
+				    {% endfor %}
+				    </ul>
+				  {% endif %}
+				{% endwith %}
+				</div>
+			</div>
+
+			<div id='loading' class="col s12 m12 l8 offset-l2 hide"> 
+				<div class="flow-text center-align">
+				Loading... <i class="rotate material-icons left">refresh</i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	(function() { 
+		var loadingEl = document.querySelector("#loading");
+		var inputEl = document.querySelector("input[name='name']");
+		var exampleEl = document.querySelector("a#username-example");
+			exampleEl.onclick = function(e) {
+				inputEl.value = "psykzz";
+			}
+			inputEl.onkeypress = function(e) {
+				if (!e) e = window.event;
+				var keyCode = e.keyCode || e.which;
+				if (keyCode == '13'){
+					loadingEl.classList.remove('hide')
+					window.location.href = '/games/' + inputEl.value;
+				}
+			}
+
+	})();
+
+	</script>
+{% endblock %}

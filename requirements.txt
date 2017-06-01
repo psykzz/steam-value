@@ -1,0 +1,5 @@
+flask
+requests
+uwsgi
+flask-cache
+newrelic
