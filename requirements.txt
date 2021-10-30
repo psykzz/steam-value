@@ -1,5 +1,5 @@
 flask
 requests
 uwsgi
-flask-cache
+flask-caching
 newrelic
