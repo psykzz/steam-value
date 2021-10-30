@@ -3,7 +3,7 @@ import os
 import requests
 from flask import (Flask, jsonify, request, render_template,
                    redirect, url_for, flash)
-from flask_cache import Cache
+from flask_caching import Cache
 
 import newrelic.agent
 newrelic.agent.initialize()
